@@ -1,1 +1,9 @@
-# tic-tac-toe
+#
+
+ToDos
+
+-------
+
+* board ✅
+* rendering
+* minimax
