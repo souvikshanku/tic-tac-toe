@@ -6,4 +6,5 @@ ToDos
 
 * board ✅
 * rendering
-* minimax
+* minimax ✅
+* play
