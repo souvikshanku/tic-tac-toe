@@ -5,6 +5,7 @@ ToDos
 -------
 
 * board ✅
-* rendering
+* rendering ✅
 * minimax ✅
-* play
+* play ✅
+* edge cases

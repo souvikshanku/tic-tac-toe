@@ -49,11 +49,12 @@ def minimax(node, depth, maximize):
         return min_value
 
 
-node = Node([1, 0, 2, 0, 1, 0, 0, 0, 0])
-node.expand(2)
-draw_board(node.state)
+if __name__ == "__main__":
+    node = Node([1, 0, 2, 0, 1, 0, 0, 0, 0])
+    node.expand(2)
+    draw_board(node.state)
 
-for child in node.children:
-    draw_board(child.state)
-    value = minimax(child, depth=9, maximize=True)
-    print(value)
+    for child in node.children:
+        draw_board(child.state)
+        value = minimax(child, depth=9, maximize=True)
+        print(value)
