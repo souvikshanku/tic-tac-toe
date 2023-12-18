@@ -5,16 +5,30 @@ from board import draw_board, evaluate
 from minimax import Node, minimax
 
 
-def make_move(move, state, as_player):
-    board_pos = {
-        "a1": 6, "a2": 3, "a3": 0,
-        "b1": 7, "b2": 4, "b3": 1,
-        "c1": 8, "c2": 5, "c3": 2,
-    }
+BOARD_POS = {
+    "a1": 6, "a2": 3, "a3": 0,
+    "b1": 7, "b2": 4, "b3": 1,
+    "c1": 8, "c2": 5, "c3": 2,
+}
 
-    idx = board_pos[move]
+
+def make_move(move, state, as_player):
+    idx = BOARD_POS[move]
     state[idx] = as_player
     return state
+
+
+def ask_for_valid_move(state):
+    while True:
+        move = input("Your move? ")
+        if move in BOARD_POS:
+            pos = BOARD_POS[move]
+            if state[pos] != 0:
+                print("That square is already taken ;)")
+            else:
+                return move
+        else:
+            print("Please provide a valid move. It's not that difficult!\n")
 
 
 def choose_move(state, as_player):
@@ -40,14 +54,14 @@ def render(state):
 
 
 if __name__ == "__main__":
-    player = input("You wanna go first? - 1 (yes). 2 (no)\n")
+    player = input("Do you wanna go first? - 1 (yes), 2 (no)\n")
     os.system("clear")
 
     if player == "1":
         state = [0] * 9
         draw_board(state)
         while not (Node(state).is_game_over()):
-            move = input("Your move? ")
+            move = ask_for_valid_move(state)
             state = make_move(move, state, as_player=1)
             state = choose_move(state, as_player=1)
             render(state)
@@ -59,7 +73,7 @@ if __name__ == "__main__":
         draw_board(state)
 
         while not (Node(state).is_game_over()):
-            move = input("Your move? ")
+            move = ask_for_valid_move(state)
             state = make_move(move, state, as_player=2)
             state = choose_move(state, as_player=2)
             render(state)

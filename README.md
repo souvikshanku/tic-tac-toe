@@ -8,4 +8,4 @@ ToDos
 * rendering ✅
 * minimax ✅
 * play ✅
-* edge cases
+* edge cases ✅
