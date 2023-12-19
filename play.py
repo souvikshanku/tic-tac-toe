@@ -34,18 +34,20 @@ def ask_for_valid_move(state):
 def choose_move(state, as_player):
     node = Node(state)
 
-    if as_player == 1:
-        value = minimax(node, depth=9, maximize=False)
-        node.expand(player=2)
-        for child in node.children:
-            if value == minimax(Node(child.state), depth=9, maximize=True):
-                return child.state
-    else:
-        value = minimax(node, depth=9, maximize=True)
-        node.expand(player=1)
-        for child in node.children:
-            if value == minimax(Node(child.state), depth=9, maximize=False):
-                return child.state
+    if not node.is_game_over():
+        if as_player == 1:
+            value = minimax(node, depth=9, maximize=False)
+            node.expand(player=2)
+            for child in node.children:
+                if value == minimax(Node(child.state), depth=9, maximize=True):
+                    return child.state
+        else:
+            value = minimax(node, depth=9, maximize=True)
+            node.expand(player=1)
+            for child in node.children:
+                if value == minimax(Node(child.state), depth=9, maximize=False): # noqa
+                    return child.state
+    return state
 
 
 def render(state):

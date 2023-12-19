@@ -5,7 +5,6 @@ class Node:
     def __init__(self, game_state):
         self.state = game_state
         self.children = []
-        self.value = - 1e4
 
     def __repr__(self):
         return str(self.state)
